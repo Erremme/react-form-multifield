@@ -6,7 +6,8 @@ export default function App(){
  const [formData , setFormData] = useState({
   autore : "",
   libro : "",
-  argomento : ""
+  argomento : "",
+  available : false
 });
 
  const handleFormDataField = (fieldName , value) =>{
@@ -23,7 +24,8 @@ export default function App(){
    setFormData ({
     autore : "",
     libro : "",
-    argomento : ""
+    argomento : "",
+    available : false
    })
  }
 
@@ -31,17 +33,23 @@ export default function App(){
   return(
     <div className="container">
       <h1>LISTA DEI LIBRI</h1>
-      <ul>
+      <ul className="book-list">
         {bookList.map((item, index) => {
           return(
-              <li key={index}> {item.autore} -{item.libro} - {item.argomento}</li>
+              <li className=" .book-item" key={index}> 
+              <h3 className="book-author">{item.autore}</h3> 
+              <h4 className="book-title">{item.libro}</h4>
+              <h5 className="book-genre"> {item.argomento} </h5> 
+              <h6 className="book-availability">{item.available ? "Disponibile" :"Non disponibile"}</h6>
+              </li>
           )
         })}
       </ul>
 
-      <h3>Aggiungi un Libro</h3>
+      
 
-      <form onSubmit={onSubmit} >
+      <form className="book-form" onSubmit={onSubmit} >
+      <h3 className="book-form">Aggiungi un Libro</h3>
         <input type="text" placeholder="Aggiungi Autore" value={ formData.autore} onChange={(e) => handleFormDataField("autore" , e.target.value)}/>
         <input type="text" placeholder="Aggiungi Libro" value={formData.libro} onChange={(e) => handleFormDataField("libro" , e.target.value)} />
         <select value = {formData.argomento} onChange={(e) => handleFormDataField("argomento" , e.target.value)}>
@@ -51,6 +59,8 @@ export default function App(){
           <option value ="UI/UX"> UI/UX</option>
         </select>
         <p>Valore selezionato: {formData.argomento}</p>
+        <label htmlFor="pabblicato"> Non/Disponibile</label>
+        <input id="pabblicato" type="checkbox" value = {formData.available} onChange={(e) => handleFormDataField("available" , e.target.checked)} /> <br />
         <button type="submit">Invia</button>
       </form>
     </div>
