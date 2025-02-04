@@ -56,6 +56,21 @@ h1 {
   color: green;
 }
 
+.remove-button {
+  background-color: #ff4c4c; 
+  color: #fff; 
+  border: none; 
+  border-radius: 5px; 
+  padding: 10px 15px; 
+  margin-left: 10px;
+  cursor: pointer; 
+  font-size: 14px; 
+  transition: background-color 0.3s ease; 
+}
+
+.remove-button:hover {
+  background-color: #e60000; }
+
 
 
 .book-form {

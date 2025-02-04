@@ -29,6 +29,10 @@ export default function App(){
    })
  }
 
+   const handDelete = (booksToDelelete , index) => {
+    setBookList((currenState) => currenState.filter((book) => booksToDelelete !== book))
+   }
+
 
   return(
     <div className="container">
@@ -41,6 +45,7 @@ export default function App(){
               <h4 className="book-title">{item.libro}</h4>
               <h5 className="book-genre"> {item.argomento} </h5> 
               <h6 className="book-availability">{item.available ? "Disponibile" :"Non disponibile"}</h6>
+              <button className="remove-button" onClick={ () => handDelete(item)}>X</button>
               </li>
           )
         })}
